@@ -57,6 +57,37 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Corporate Edge Custom Colors
+        corporate: {
+          dark: "hsl(var(--corporate-dark))",
+          darker: "hsl(var(--corporate-darker))",
+          surface: "hsl(var(--corporate-surface))",
+          elevated: "hsl(var(--corporate-surface-elevated))",
+        },
+        electric: {
+          blue: "hsl(var(--electric-blue))",
+          glow: "hsl(var(--electric-blue-glow))",
+        },
+        emerald: {
+          accent: "hsl(var(--emerald-accent))",
+          glow: "hsl(var(--emerald-glow))",
+        },
+      },
+      backgroundImage: {
+        'gradient-electric': 'var(--gradient-electric)',
+        'gradient-emerald': 'var(--gradient-emerald)',
+        'gradient-surface': 'var(--gradient-surface)',
+      },
+      boxShadow: {
+        'corporate': 'var(--shadow-corporate)',
+        'elevated': 'var(--shadow-elevated)',
+        'glow-blue': 'var(--shadow-glow-blue)',
+        'glow-emerald': 'var(--shadow-glow-emerald)',
+      },
+      transitionTimingFunction: {
+        'sharp': 'cubic-bezier(0.4, 0, 0.2, 1)',
+        'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
+        'bounce': 'cubic-bezier(0.68, -0.55, 0.265, 1.55)',
       },
       borderRadius: {
         lg: "var(--radius)",
