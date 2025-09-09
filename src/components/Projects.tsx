@@ -1,6 +1,28 @@
 import { useEffect, useRef, useState } from "react";
 import { Github, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 
+// Add image imports
+import bookConnectImg from "../assets/Book-Connect.jpeg";
+import cacheBankImg from "../assets/Cache-Bank-Landing-Page.jpeg";
+import calculatorImg from "../assets/Calculator.jpeg";
+import codeCuisineImg from "../assets/Code-Cuisine.jpeg";
+import contentGeneratorImg from "../assets/Content-Generator.jpeg";
+import lmPodImg from "../assets/LM-Pod.jpeg";
+import memeGeneratorImg from "../assets/Meme-Generator.jpeg";
+import movieManiacImg from "../assets/Movie-Maniac.jpeg";
+import pigGameImg from "../assets/Pig-Game.jpeg";
+import recidexImg from "../assets/Recidex.jpeg";
+import resumeBuilderImg from "../assets/Resume-Builder.jpeg";
+import shoppingCartImg from "../assets/Shopping-Cart.jpeg";
+import staticWeatherImg from "../assets/Static-Weather-Page.jpeg";
+import taskManagementImg from "../assets/Task-Management.jpeg";
+import taskOrganiserImg from "../assets/Task-Organiser.jpeg";
+import toDoImg from "../assets/To-Do.jpeg";
+import wholeDivisionImg from "../assets/Whole-Number-Division.jpeg";
+import ytCloneImg from "../assets/YT-Clone-UI.jpeg";
+
+
+
 const Projects = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [currentRow, setCurrentRow] = useState(0);
@@ -24,159 +46,161 @@ const Projects = () => {
   }, []);
 
   // Sample projects data - in real implementation, this would come from an API or database
-  const projectRows = [
+const projectRows = [
     [
+      // First 6 projects
       {
-        title: "E-Commerce Platform",
-        description: "Full-stack e-commerce solution with payment integration and admin dashboard.",
-        technologies: ["React", "Node.js", "PostgreSQL", "Stripe"],
-        githubUrl: "https://github.com/leemaalgraaff/ecommerce-platform",
-        liveUrl: "https://ecommerce-demo.com",
-        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&h=250"
+        title: "Book Connect",
+        description: "Full-stack book management and reading list application.",
+        technologies: ["React", "Node.js", "PostgreSQL", "Redux"],
+        githubUrl: "https://github.com/leemaalgraaff/book-connect",
+        liveUrl: "https://book-connect-demo.com",
+        image: bookConnectImg
       },
       {
-        title: "Task Management App",
-        description: "Collaborative task management tool with real-time updates and team features.",
-        technologies: ["Vue.js", "Express", "MongoDB", "Socket.io"],
-        githubUrl: "https://github.com/leemaalgraaff/task-manager",
-        liveUrl: "https://taskmanager-demo.com",
-        image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?auto=format&fit=crop&w=400&h=250"
+        title: "Cache Bank Landing",
+        description: "Modern responsive landing page for digital banking platform.",
+        technologies: ["React", "TypeScript", "Tailwind CSS", "Framer Motion"],
+        githubUrl: "https://github.com/leemaalgraaff/cache-bank",
+        liveUrl: "https://cache-bank-demo.com",
+        image: cacheBankImg
       },
       {
-        title: "Weather Dashboard",
-        description: "Real-time weather application with interactive maps and forecasts.",
-        technologies: ["React", "TypeScript", "OpenWeather API", "Tailwind"],
-        githubUrl: "https://github.com/leemaalgraaff/weather-dashboard",
-        liveUrl: "https://weather-dash-demo.com",
-        image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?auto=format&fit=crop&w=400&h=250"
+        title: "Calculator App",
+        description: "Interactive calculator with advanced mathematical functions.",
+        technologies: ["JavaScript", "HTML", "CSS", "Jest"],
+        githubUrl: "https://github.com/leemaalgraaff/calculator",
+        liveUrl: "https://calculator-demo.com",
+        image: calculatorImg
       },
       {
-        title: "Social Media Analytics",
-        description: "Analytics platform for social media metrics and engagement tracking.",
-        technologies: ["Python", "Django", "PostgreSQL", "Chart.js"],
-        githubUrl: "https://github.com/leemaalgraaff/social-analytics",
-        liveUrl: "https://analytics-demo.com",
-        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=400&h=250"
+        title: "Code Cuisine",
+        description: "Recipe sharing and cooking tutorial platform.",
+        technologies: ["React", "Node.js", "MongoDB", "Express"],
+        githubUrl: "https://github.com/leemaalgraaff/code-cuisine",
+        liveUrl: "https://code-cuisine-demo.com",
+        image: codeCuisineImg
       },
       {
-        title: "Cryptocurrency Tracker",
-        description: "Real-time cryptocurrency price tracking with portfolio management.",
-        technologies: ["React", "Redux", "CoinGecko API", "Chart.js"],
-        githubUrl: "https://github.com/leemaalgraaff/crypto-tracker",
-        liveUrl: "https://crypto-track-demo.com",
-        image: "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=400&h=250"
+        title: "Content Generator",
+        description: "AI-powered content generation tool.",
+        technologies: ["React", "OpenAI API", "Node.js", "Express"],
+        githubUrl: "https://github.com/leemaalgraaff/content-generator",
+        liveUrl: "https://content-generator-demo.com",
+        image: contentGeneratorImg
       },
       {
-        title: "Recipe Sharing Platform",
-        description: "Community-driven recipe sharing with ratings and reviews system.",
-        technologies: ["Next.js", "Prisma", "PostgreSQL", "Cloudinary"],
-        githubUrl: "https://github.com/leemaalgraaff/recipe-platform",
-        liveUrl: "https://recipes-demo.com",
-        image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?auto=format&fit=crop&w=400&h=250"
+        title: "LM Pod",
+        description: "Podcast streaming and management platform.",
+        technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
+        githubUrl: "https://github.com/leemaalgraaff/lm-pod",
+        liveUrl: "https://lm-pod-demo.com",
+        image: lmPodImg
       }
     ],
     [
+      // Next 6 projects
       {
-        title: "Fitness Tracking App",
-        description: "Mobile-responsive fitness tracker with workout plans and progress monitoring.",
-        technologies: ["React Native", "Firebase", "Node.js", "MongoDB"],
-        githubUrl: "https://github.com/leemaalgraaff/fitness-tracker",
-        liveUrl: "https://fitness-demo.com",
-        image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&h=250"
+        title: "Meme Generator",
+        description: "Interactive meme creation and sharing platform.",
+        technologies: ["React", "Canvas API", "Firebase", "Cloudinary"],
+        githubUrl: "https://github.com/leemaalgraaff/meme-generator",
+        liveUrl: "https://meme-generator-demo.com",
+        image: memeGeneratorImg
       },
       {
-        title: "Learning Management System",
-        description: "Educational platform with course creation, video streaming, and progress tracking.",
-        technologies: ["Angular", "Node.js", "MySQL", "AWS S3"],
-        githubUrl: "https://github.com/leemaalgraaff/lms-platform",
-        liveUrl: "https://lms-demo.com",
-        image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=400&h=250"
+        title: "Movie Maniac",
+        description: "Movie discovery and review platform.",
+        technologies: ["React", "TMDB API", "Firebase", "Tailwind"],
+        githubUrl: "https://github.com/leemaalgraaff/movie-maniac",
+        liveUrl: "https://movie-maniac-demo.com",
+        image: movieManiacImg
       },
       {
-        title: "Real Estate Platform",
-        description: "Property listing platform with advanced search and virtual tours.",
-        technologies: ["React", "GraphQL", "PostgreSQL", "Mapbox"],
-        githubUrl: "https://github.com/leemaalgraaff/realestate-platform",
-        liveUrl: "https://realestate-demo.com",
-        image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&h=250"
+        title: "Pig Game",
+        description: "Interactive dice game with multiplayer support.",
+        technologies: ["JavaScript", "HTML", "CSS", "Socket.io"],
+        githubUrl: "https://github.com/leemaalgraaff/pig-game",
+        liveUrl: "https://pig-game-demo.com",
+        image: pigGameImg
       },
       {
-        title: "Chat Application",
-        description: "Real-time messaging application with file sharing and group chats.",
-        technologies: ["React", "Socket.io", "Express", "Redis"],
-        githubUrl: "https://github.com/leemaalgraaff/chat-app",
-        liveUrl: "https://chat-demo.com",
-        image: "https://images.unsplash.com/photo-1577563908411-5077b6dc7624?auto=format&fit=crop&w=400&h=250"
+        title: "Recidex",
+        description: "Recipe indexing and management system.",
+        technologies: ["React", "Node.js", "MongoDB", "Express"],
+        githubUrl: "https://github.com/leemaalgraaff/recidex",
+        liveUrl: "https://recidex-demo.com",
+        image: recidexImg
       },
       {
-        title: "Inventory Management",
-        description: "Business inventory tracking system with automated alerts and reporting.",
-        technologies: ["Vue.js", "Laravel", "MySQL", "Vuetify"],
-        githubUrl: "https://github.com/leemaalgraaff/inventory-system",
-        liveUrl: "https://inventory-demo.com",
-        image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=400&h=250"
+        title: "Resume Builder",
+        description: "Dynamic resume creation platform.",
+        technologies: ["React", "Redux", "Firebase", "PDF.js"],
+        githubUrl: "https://github.com/leemaalgraaff/resume-builder",
+        liveUrl: "https://resume-builder-demo.com",
+        image: resumeBuilderImg
       },
       {
-        title: "Event Management System",
-        description: "Comprehensive event planning and management platform with ticketing.",
-        technologies: ["React", "Node.js", "MongoDB", "Stripe"],
-        githubUrl: "https://github.com/leemaalgraaff/event-management",
-        liveUrl: "https://events-demo.com",
-        image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=400&h=250"
+        title: "Shopping Cart",
+        description: "E-commerce shopping cart implementation.",
+        technologies: ["React", "Redux", "Node.js", "Stripe"],
+        githubUrl: "https://github.com/leemaalgraaff/shopping-cart",
+        liveUrl: "https://shopping-cart-demo.com",
+        image: shoppingCartImg
       }
     ],
     [
+      // Final 6 projects
       {
-        title: "Portfolio Website",
-        description: "Responsive portfolio website with dynamic content management.",
-        technologies: ["Gatsby", "GraphQL", "Contentful", "Netlify"],
-        githubUrl: "https://github.com/leemaalgraaff/portfolio-v2",
-        liveUrl: "https://portfolio-demo.com",
-        image: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?auto=format&fit=crop&w=400&h=250"
+        title: "Static Weather Page",
+        description: "Weather information display page.",
+        technologies: ["HTML", "CSS", "JavaScript", "Weather API"],
+        githubUrl: "https://github.com/leemaalgraaff/static-weather",
+        liveUrl: "https://static-weather-demo.com",
+        image: staticWeatherImg
       },
       {
-        title: "Blog CMS",
-        description: "Headless CMS for blog management with markdown support and SEO optimization.",
-        technologies: ["Strapi", "React", "PostgreSQL", "AWS"],
-        githubUrl: "https://github.com/leemaalgraaff/blog-cms",
-        liveUrl: "https://blog-cms-demo.com",
-        image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?auto=format&fit=crop&w=400&h=250"
+        title: "Task Management",
+        description: "Project and task management platform.",
+        technologies: ["React", "Node.js", "MongoDB", "Express"],
+        githubUrl: "https://github.com/leemaalgraaff/task-management",
+        liveUrl: "https://task-management-demo.com",
+        image: taskManagementImg
       },
       {
-        title: "Data Visualization Dashboard",
-        description: "Interactive dashboard for business intelligence and data analytics.",
-        technologies: ["D3.js", "Python", "Flask", "PostgreSQL"],
-        githubUrl: "https://github.com/leemaalgraaff/data-viz-dashboard",
-        liveUrl: "https://dataviz-demo.com",
-        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=400&h=250"
+        title: "Task Organiser",
+        description: "Personal task organization tool.",
+        technologies: ["React", "LocalStorage", "CSS", "JavaScript"],
+        githubUrl: "https://github.com/leemaalgraaff/task-organiser",
+        liveUrl: "https://task-organiser-demo.com",
+        image: taskOrganiserImg
       },
       {
-        title: "API Gateway",
-        description: "Microservices API gateway with authentication and rate limiting.",
-        technologies: ["Node.js", "Docker", "Redis", "JWT"],
-        githubUrl: "https://github.com/leemaalgraaff/api-gateway",
-        liveUrl: "https://api-gateway-demo.com",
-        image: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=400&h=250"
+        title: "To Do App",
+        description: "Simple but effective todo list application.",
+        technologies: ["React", "TypeScript", "LocalStorage", "CSS"],
+        githubUrl: "https://github.com/leemaalgraaff/todo-app",
+        liveUrl: "https://todo-demo.com",
+        image: toDoImg
       },
       {
-        title: "Mobile Banking App",
-        description: "Secure mobile banking interface with biometric authentication.",
-        technologies: ["React Native", "Node.js", "PostgreSQL", "Plaid API"],
-        githubUrl: "https://github.com/leemaalgraaff/banking-app",
-        liveUrl: "https://banking-demo.com",
-        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&w=400&h=250"
+        title: "Whole Number Division",
+        description: "Educational math learning platform.",
+        technologies: ["JavaScript", "HTML", "CSS", "Math.js"],
+        githubUrl: "https://github.com/leemaalgraaff/division-app",
+        liveUrl: "https://division-demo.com",
+        image: wholeDivisionImg
       },
       {
-        title: "DevOps Monitoring Tool",
-        description: "Infrastructure monitoring and alerting system for DevOps teams.",
-        technologies: ["React", "Grafana", "Prometheus", "Docker"],
-        githubUrl: "https://github.com/leemaalgraaff/devops-monitor",
-        liveUrl: "https://monitor-demo.com",
-        image: "https://images.unsplash.com/photo-1551808525-51a94da548ce?auto=format&fit=crop&w=400&h=250"
+        title: "YouTube Clone UI",
+        description: "YouTube interface clone with basic functionality.",
+        technologies: ["React", "YouTube API", "Tailwind", "Redux"],
+        githubUrl: "https://github.com/leemaalgraaff/yt-clone",
+        liveUrl: "https://yt-clone-demo.com",
+        image: ytCloneImg
       }
     ]
-  ];
-
+];
   const nextRow = () => {
     setCurrentRow((prev) => (prev + 1) % projectRows.length);
   };
