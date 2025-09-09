@@ -257,7 +257,7 @@
   }
 
   .card-project {
-    @apply bg-card border border-border/20 overflow-hidden group;
+    @apply bg-card border border-border/20 overflow-hidden;
     @apply transition-all duration-300 hover:border-primary/50;
     @apply hover:shadow-xl hover:shadow-primary/10;
   }
