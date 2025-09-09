@@ -200,117 +200,113 @@ const Projects = () => {
             Explore my portfolio of professional projects showcasing modern development practices and innovative solutions.
           </p>
         </div>
+    </div>
+{/* Navigation and Projects Container */}
+<div className="overflow-hidden">
+  {/* Navigation */}
+  <div className="flex justify-center items-center mb-8 gap-4">
+    <button
+      onClick={prevRow}
+      className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 border border-primary/20 hover:border-primary/40 transition-all"
+    >
+      <ChevronLeft className="w-5 h-5 text-primary" />
+    </button>
+    
+    <div className="flex gap-2">
+      {projectRows.map((_, index) => (
+        <button
+          key={index}
+          onClick={() => setCurrentRow(index)}
+          className={`w-3 h-3 rounded-full transition-all ${
+            currentRow === index 
+              ? 'bg-primary shadow-glow-blue' 
+              : 'bg-primary/20 hover:bg-primary/40'
+          }`}
+        />
+      ))}
+    </div>
 
-        {/* Navigation */}
-        <div className="flex justify-center items-center mb-8 gap-4">
-          <button
-            onClick={prevRow}
-            className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 border border-primary/20 hover:border-primary/40 transition-all"
-          >
-            <ChevronLeft className="w-5 h-5 text-primary" />
-          </button>
-          
-          <div className="flex gap-2">
-            {projectRows.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentRow(index)}
-                className={`w-3 h-3 rounded-full transition-all ${
-                  currentRow === index 
-                    ? 'bg-primary shadow-glow-blue' 
-                    : 'bg-primary/20 hover:bg-primary/40'
-                }`}
-              />
-            ))}
-          </div>
+    <button
+      onClick={nextRow}
+      className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 border border-primary/20 hover:border-primary/40 transition-all"
+    >
+      <ChevronRight className="w-5 h-5 text-primary" />
+    </button>
+  </div>
 
-          <button
-            onClick={nextRow}
-            className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 border border-primary/20 hover:border-primary/40 transition-all"
-          >
-            <ChevronRight className="w-5 h-5 text-primary" />
-          </button>
-        </div>
-
-        {/* Projects Grid - Netflix Style */}
-        <div className="relative overflow-hidden h-[500px]">
-          <div 
-            className="absolute w-full transition-transform duration-500 ease-smooth"
-            style={{ transform: `translateY(${currentRow * -100}%)` }}
-          >
-            {projectRows.map((row, rowIndex) => (
-              <div 
-                key={rowIndex} 
-                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 min-h-[500px]"
-              >
-                {row.map((project, projectIndex) => (
-                  <div
-                    key={`${rowIndex}-${projectIndex}`}
-                    className={`card-project group rounded-lg transition-all duration-1000 ${
-                      isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-                    }`}
-                    style={{ 
-                      transitionDelay: `${projectIndex * 0.1}s`,
-                      animationFillMode: 'both'
-                    }}
+  {/* Projects Slider */}
+  <div className="overflow-hidden">
+    <div 
+      className="flex transition-transform duration-500 ease-in-out"
+      style={{ transform: `translateX(-${currentRow * 100}%)` }}
+    >
+      {projectRows.map((row, rowIndex) => (
+        <div 
+          key={rowIndex}
+          className="grid grid-cols-6 gap-6 w-full flex-shrink-0"
+        >
+          {row.map((project, projectIndex) => (
+            <div
+              key={projectIndex}
+              className="bg-card rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
+            >
+              {/* Project Image */}
+              <div className="relative aspect-video overflow-hidden">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                
+                {/* Hover Overlay with Icons */}
+                <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                  <a
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 bg-primary rounded-full hover:bg-primary/80 transition-colors"
                   >
-                    {/* Project Image */}
-                    <div className="relative overflow-hidden h-48">
-                      <img
-                        src={project.image}
-                        alt={project.title}
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                      />
-                      
-                      {/* Hover Overlay with Icons */}
-                      <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                        <a
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-3 bg-primary rounded-full hover:bg-primary/80 transition-colors hover-lift"
-                        >
-                          <Github className="w-5 h-5 text-primary-foreground" />
-                        </a>
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-3 bg-accent rounded-full hover:bg-accent/80 transition-colors hover-lift"
-                        >
-                          <ExternalLink className="w-5 h-5 text-accent-foreground" />
-                        </a>
-                      </div>
-                    </div>
-
-                    {/* Project Content */}
-                    <div className="p-6">
-                      <h3 className="text-xl font-bold text-corporate-primary mb-2 group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
-                        {project.description}
-                      </p>
-                      
-                      {/* Technologies */}
-                      <div className="flex flex-wrap gap-2">
-                        {project.technologies.map((tech) => (
-                          <span
-                            key={tech}
-                            className="px-2 py-1 bg-primary/10 text-primary text-xs rounded border border-primary/20"
-                          >
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                    <Github className="w-4 h-4 text-primary-foreground" />
+                  </a>
+                  <a
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="p-2 bg-accent rounded-full hover:bg-accent/80 transition-colors"
+                  >
+                    <ExternalLink className="w-4 h-4 text-accent-foreground" />
+                  </a>
+                </div>
               </div>
-            ))}
-          </div>
+
+              {/* Project Content */}
+              <div className="p-4">
+                <h3 className="text-lg font-semibold mb-2 line-clamp-1">
+                  {project.title}
+                </h3>
+                <p className="text-muted-foreground text-sm mb-3 line-clamp-2">
+                  {project.description}
+                </p>
+                
+                {/* Technologies */}
+                <div className="flex flex-wrap gap-1">
+                  {project.technologies.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-0.5 bg-primary/10 text-primary text-xs rounded"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-      </div>
+      ))}
+    </div>
+  </div>
+</div>
     </section>
   );
 };
