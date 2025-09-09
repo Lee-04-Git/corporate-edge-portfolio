@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Award, ExternalLink } from "lucide-react";
+import { Award, ExternalLink, Rocket, Mic, Users, Zap } from "lucide-react";
 
 const Certificates = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -113,22 +113,22 @@ const Certificates = () => {
     {
       title: "Open Source Contributor",
       description: "Contributing to popular React libraries with 500+ GitHub stars",
-      icon: "🚀"
+      icon: Rocket
     },
     {
       title: "Tech Conference Speaker",
       description: "Presented at 3 major tech conferences on modern web development",
-      icon: "🎤"
+      icon: Mic
     },
     {
       title: "Team Leadership Excellence",
       description: "Led cross-functional teams of 8+ developers on critical projects",
-      icon: "👥"
+      icon: Users
     },
     {
       title: "Performance Optimization Expert",
       description: "Achieved 40% performance improvements across multiple applications",
-      icon: "⚡"
+      icon: Zap
     }
   ];
 
@@ -239,7 +239,9 @@ const Certificates = () => {
                 }}
               >
                 <div className="flex items-start gap-4">
-                  <div className="text-2xl flex-shrink-0">{achievement.icon}</div>
+                  <div className="text-primary flex-shrink-0">
+                    <achievement.icon className="w-6 h-6" />
+                  </div>
                   <div>
                     <h4 className="font-bold text-corporate-primary mb-2">
                       {achievement.title}

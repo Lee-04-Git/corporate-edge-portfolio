@@ -232,18 +232,21 @@ const Projects = () => {
           </button>
         </div>
 
-        {/* Projects Grid */}
-        <div className="relative overflow-hidden">
+        {/* Projects Grid - Netflix Style */}
+        <div className="relative overflow-hidden h-[500px]">
           <div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 transition-transform duration-500 ease-smooth"
+            className="absolute w-full transition-transform duration-500 ease-smooth"
             style={{ transform: `translateY(${currentRow * -100}%)` }}
           >
             {projectRows.map((row, rowIndex) => (
-              <div key={rowIndex} className="contents">
+              <div 
+                key={rowIndex} 
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6 min-h-[500px]"
+              >
                 {row.map((project, projectIndex) => (
                   <div
                     key={`${rowIndex}-${projectIndex}`}
-                    className={`card-project rounded-lg transition-all duration-1000 ${
+                    className={`card-project group rounded-lg transition-all duration-1000 ${
                       isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
                     }`}
                     style={{ 
