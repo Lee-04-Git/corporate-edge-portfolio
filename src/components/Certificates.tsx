@@ -17,7 +17,7 @@ const Certificates = () => {
   const [achievementCount, setAchievementCount] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
-  const targetCertificates = 12;
+  const targetCertificates = 8;
   const targetAchievements = 25;
 
   useEffect(() => {
