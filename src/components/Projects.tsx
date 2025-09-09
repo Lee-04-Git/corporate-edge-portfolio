@@ -246,38 +246,38 @@ const Projects = () => {
           className="grid grid-cols-6 gap-6 w-full flex-shrink-0"
         >
           {row.map((project, projectIndex) => (
-            <div
-              key={projectIndex}
-              className="bg-card rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
-            >
-              {/* Project Image */}
-              <div className="relative aspect-video overflow-hidden">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                />
-                
-                {/* Hover Overlay with Icons */}
-                <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 bg-primary rounded-full hover:bg-primary/80 transition-colors"
-                  >
-                    <Github className="w-4 h-4 text-primary-foreground" />
-                  </a>
-                  <a
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 bg-accent rounded-full hover:bg-accent/80 transition-colors"
-                  >
-                    <ExternalLink className="w-4 h-4 text-accent-foreground" />
-                  </a>
-                </div>
-              </div>
+  <div
+    key={projectIndex}
+    className="group bg-card rounded-lg shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl"
+  >
+    {/* Project Image */}
+    <div className="relative aspect-video overflow-hidden">
+      <img
+        src={project.image}
+        alt={project.title}
+        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+      />
+      
+      {/* Hover Overlay with Icons */}
+      <div className="absolute inset-0 bg-black/80 opacity-0 group-hover:opacity-100 transition-all duration-300 flex items-center justify-center gap-4">
+        <a
+          href={project.githubUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 bg-primary rounded-full hover:bg-primary/80 transition-colors transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 duration-300"
+        >
+          <Github className="w-4 h-4 text-primary-foreground" />
+        </a>
+        <a
+          href={project.liveUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="p-2 bg-accent rounded-full hover:bg-accent/80 transition-colors transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 duration-300 delay-75"
+        >
+          <ExternalLink className="w-4 h-4 text-accent-foreground" />
+        </a>
+      </div>
+    </div>
 
               {/* Project Content */}
               <div className="p-4">
