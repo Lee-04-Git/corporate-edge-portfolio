@@ -6,7 +6,7 @@ const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
+   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -14,6 +14,18 @@ const Navigation = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const element = document.querySelector(href);
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+      setIsOpen(false);
+    }
+  };
 
   const navItems = [
     { name: "Home", href: "#hero" },
@@ -37,12 +49,13 @@ const Navigation = () => {
             LM
           </div>
 
-          {/* Desktop Navigation */}
+         {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
               <a
                 key={item.name}
                 href={item.href}
+                onClick={(e) => handleClick(e, item.href)}
                 className="text-muted-foreground hover:text-primary transition-colors duration-200 font-medium"
               >
                 {item.name}
@@ -71,8 +84,8 @@ const Navigation = () => {
                 <a
                   key={item.name}
                   href={item.href}
+                  onClick={(e) => handleClick(e, item.href)}
                   className="block px-3 py-2 text-muted-foreground hover:text-primary transition-colors duration-200 font-medium"
-                  onClick={() => setIsOpen(false)}
                 >
                   {item.name}
                 </a>
