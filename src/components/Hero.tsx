@@ -8,30 +8,37 @@ const Hero = () => {
   const [displayedText, setDisplayedText] = useState("");
   const fullName = "Lee Maalgraaff";
 
-  useEffect(() => {
-    // Trigger animations after component mounts
-    const timer = setTimeout(() => {
-      setShowTypewriter(true);
-    }, 800);
-
-    return () => clearTimeout(timer);
+useEffect(() => {
+    // Start typewriter effect immediately
+    setShowTypewriter(true);
   }, []);
 
-  useEffect(() => {
-    if (showTypewriter) {
-      let index = 0;
-      const typeTimer = setInterval(() => {
-        if (index <= fullName.length) {
-          setDisplayedText(fullName.substring(0, index));
-          index++;
-        } else {
-          clearInterval(typeTimer);
+useEffect(() => {
+  if (showTypewriter) {
+    let index = 0;
+    let isDeleting = false;
+    
+    const typeTimer = setInterval(() => {
+      if (!isDeleting && index <= fullName.length) {
+        setDisplayedText(fullName.substring(0, index));
+        index++;
+        if (index > fullName.length) {
+          isDeleting = true;
         }
-      }, 150);
+      } else if (isDeleting && index >= 0) {
+        setDisplayedText(fullName.substring(0, index));
+        index--;
+        if (index < 0) {
+          isDeleting = false;
+          index = 0;
+        }
+      }
+    }, isDeleting ? 50 : 100); // Faster deletion speed for smoother transition
 
-      return () => clearInterval(typeTimer);
-    }
-  }, [showTypewriter]);
+    return () => clearInterval(typeTimer);
+  }
+}, [showTypewriter]);
+// ...existing code...
 
   const handleDownloadResume = () => {
     // Create a mock resume download - in real implementation, this would link to actual resume
