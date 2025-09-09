@@ -1,6 +1,16 @@
 import { useEffect, useRef, useState } from "react";
 import { Award, ExternalLink, Rocket, Mic, Users, Zap } from "lucide-react";
 
+import AIEssentials from '../certificates/AI Essentials.pdf';
+import AIForEveryone from '../certificates/AI For Everyone - Certificate Of Completion.pdf';
+import ActiveListening from '../certificates/Active Listening - Enhancing Communication Skills Certificate.pdf';
+import IntroToAI from '../certificates/Introduction To Artificial Intelligence Certificate.pdf';
+import GenAI from '../certificates/Introduction to Generative AI.pdf';
+import PersonalIntroAI from '../certificates/Lee Maalgraaff - Introduction To AI Certificate.pdf';
+import VerbalComm from '../certificates/Verbal Communication and Presentation Skills.pdf';
+import ProfEmails from '../certificates/Write Professional Emails.pdf';
+
+
 const Certificates = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [certificateCount, setCertificateCount] = useState(0);
@@ -50,62 +60,63 @@ const Certificates = () => {
     }
   }, [isVisible]);
 
-  const certificates = [
+    const certificates = [
     {
-      title: "AWS Certified Solutions Architect",
-      issuer: "Amazon Web Services",
+      title: "AI Essentials",
+      issuer: "Corporate Edge",
       date: "2023",
-      credentialId: "AWS-SA-2023-001",
-      driveUrl: "https://drive.google.com/file/d/example1/view"
+      credentialId: "AI-ESS-2023-001",
+      pdfUrl: AIEssentials,
+      thumbnail: "/path/to/thumbnail.png" // You'll need to create thumbnails
     },
     {
-      title: "Google Cloud Professional Developer",
+      title: "AI For Everyone",
+      issuer: "Coursera",
+      date: "2023",
+      credentialId: "AI4E-2023-001",
+      pdfUrl: AIForEveryone
+    },
+    {
+      title: "Active Listening & Communication",
+      issuer: "Corporate Edge",
+      date: "2023",
+      credentialId: "AL-COM-2023-001",
+      pdfUrl: ActiveListening
+    },
+    {
+      title: "Introduction to AI",
+      issuer: "Corporate Edge",
+      date: "2023",
+      credentialId: "INTRO-AI-2023-001",
+      pdfUrl: IntroToAI
+    },
+    {
+      title: "Introduction to Generative AI",
       issuer: "Google Cloud",
       date: "2023",
-      credentialId: "GCP-PD-2023-001",
-      driveUrl: "https://drive.google.com/file/d/example2/view"
+      credentialId: "GEN-AI-2023-001",
+      pdfUrl: GenAI
     },
     {
-      title: "React Developer Certification",
-      issuer: "Meta",
-      date: "2022",
-      credentialId: "META-RD-2022-001",
-      driveUrl: "https://drive.google.com/file/d/example3/view"
+      title: "Professional Email Writing",
+      issuer: "Corporate Edge",
+      date: "2023",
+      credentialId: "EMAIL-2023-001",
+      pdfUrl: ProfEmails
     },
     {
-      title: "Kubernetes Administrator (CKA)",
-      issuer: "Cloud Native Computing Foundation",
-      date: "2022",
-      credentialId: "CNCF-CKA-2022-001",
-      driveUrl: "https://drive.google.com/file/d/example4/view"
+    title: "Introduction to AI",
+    issuer: "Lee Maalgraaff",
+    date: "2023",
+    credentialId: "PERSONAL-AI-2023-001",
+    pdfUrl: PersonalIntroAI
     },
     {
-      title: "Node.js Application Developer",
-      issuer: "OpenJS Foundation",
-      date: "2022",
-      credentialId: "JSFD-NAD-2022-001",
-      driveUrl: "https://drive.google.com/file/d/example5/view"
-    },
-    {
-      title: "Docker Certified Associate",
-      issuer: "Docker Inc",
-      date: "2021",
-      credentialId: "DOCKER-DCA-2021-001",
-      driveUrl: "https://drive.google.com/file/d/example6/view"
-    },
-    {
-      title: "MongoDB Developer Associate",
-      issuer: "MongoDB University",
-      date: "2021",
-      credentialId: "MONGO-DA-2021-001",
-      driveUrl: "https://drive.google.com/file/d/example7/view"
-    },
-    {
-      title: "Scrum Master Professional",
-      issuer: "Scrum Alliance",
-      date: "2021",
-      credentialId: "CSM-2021-001",
-      driveUrl: "https://drive.google.com/file/d/example8/view"
+      title: "Verbal Communication",
+      issuer: "Corporate Edge",
+      date: "2023",
+      credentialId: "VERB-COM-2023-001",
+      pdfUrl: VerbalComm
     }
   ];
 
@@ -181,10 +192,20 @@ const Certificates = () => {
                   animationFillMode: 'both'
                 }}
               >
+
+                {/* Add PDF Preview here */}
+                <div className="mb-4 aspect-[4/3] relative">
+                  <embed 
+                    src={`${cert.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                    type="application/pdf"
+                    className="w-full h-full rounded-md"
+                  />
+                </div>
+
                 {/* Hover Overlay */}
                 <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <a
-                    href={cert.driveUrl}
+                    href={cert.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-3 bg-primary rounded-full hover:bg-primary/80 transition-colors hover-lift"
