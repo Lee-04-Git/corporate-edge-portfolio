@@ -76,19 +76,19 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email",
-      value: "lee.maalgraaff@example.com",
-      link: "mailto:lee.maalgraaff@example.com"
+      value: "leemaalgraaff04@gmail.com",
+      link: "mailto:leemaalgraaff04@gmail.com"
     },
     {
       icon: Phone,
       title: "Phone",
-      value: "+1 (555) 123-4567",
+      value: "+27 65 883 7209",
       link: "tel:+15551234567"
     },
     {
       icon: MapPin,
       title: "Location",
-      value: "San Francisco, CA",
+      value: "South Africa, CPT",
       link: null
     }
   ];
@@ -97,21 +97,15 @@ const Contact = () => {
     {
       icon: Github,
       label: "GitHub",
-      url: "https://github.com/leemaalgraaff",
+      url: "https://github.com/Lee-04-Git",
       color: "hover:text-white"
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      url: "https://linkedin.com/in/leemaalgraaff",
+      url: "https://www.linkedin.com/in/lee-maalgraaff-02227734a/",
       color: "hover:text-blue-400"
     },
-    {
-      icon: Twitter,
-      label: "Twitter",
-      url: "https://twitter.com/leemaalgraaff",
-      color: "hover:text-blue-400"
-    }
   ];
 
   return (
@@ -281,18 +275,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-
-      {/* Footer */}
-      <footer className="mt-20 pt-8 border-t border-border/20">
-        <div className="text-center">
-          <p className="text-muted-foreground mb-4">
-            © 2024 Lee Maalgraaff. All rights reserved.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Built with React, TypeScript, and Tailwind CSS
-          </p>
-        </div>
-      </footer>
     </section>
   );
 };

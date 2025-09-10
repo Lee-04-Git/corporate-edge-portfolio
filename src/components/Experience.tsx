@@ -66,13 +66,15 @@ const Experience = () => {
     }
     setStars(starArray);
   }, []);
-
-  const experiences = [
-    { title: "Senior Software Developer", company: "TechCorp Solutions", period: "2022 - Present", description: "Leading full-stack development initiatives, architecting scalable microservices, and mentoring junior developers. Implemented cloud-native solutions resulting in 40% improved performance.", technologies: ["React", "Node.js", "AWS", "Docker", "Kubernetes"] },
-    { title: "Full Stack Developer", company: "Innovation Labs", period: "2020 - 2022", description: "Developed and maintained multiple client applications using modern JavaScript frameworks. Collaborated with cross-functional teams to deliver high-quality software solutions.", technologies: ["JavaScript", "React", "Python", "PostgreSQL", "Redis"] },
-    { title: "Software Engineer", company: "StartupX", period: "2018 - 2020", description: "Built responsive web applications and RESTful APIs. Participated in agile development processes and contributed to system architecture decisions.", technologies: ["JavaScript", "Vue.js", "Node.js", "MongoDB", "Express"] },
-    { title: "Junior Developer", company: "Digital Agency Co", period: "2016 - 2018", description: "Developed websites and web applications for various clients. Gained experience in front-end technologies and database management.", technologies: ["HTML/CSS", "JavaScript", "PHP", "MySQL", "jQuery"] }
-  ];
+const experiences = [
+  { 
+    title: "Digital Associate", 
+    company: "Capaciti", 
+    period: "Jul 2025 - Present", 
+    description: "Working on real-world software projects in agile teams, building web applications, solving technical challenges, and contributing to scalable, practical solutions. Gaining hands-on experience in AI, machine learning, and cutting-edge technologies.", 
+    technologies: ["Prompt Engineering", "Machine Learning", "AI", "Python", "Large Language Models"] 
+  }
+];
 
   return (
     <section ref={sectionRef} id="experience" className="relative py-20 px-4 aurora-bg overflow-hidden">
@@ -91,12 +93,12 @@ const Experience = () => {
         <div className="aurora-layer"><div className="aurora-wave aurora-blue"></div></div>
       </div>
 
-      {/* Original Experience content */}
+      {/* Experience content */}
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
           <h2 className="text-4xl lg:text-5xl font-bold text-corporate-primary mb-4">
-            Experience & Skills
+            Work Experience
           </h2>
           <div className="w-20 h-1 bg-gradient-emerald mx-auto rounded-full"></div>
         </div>

@@ -135,24 +135,19 @@ const Certificates = () => {
 
         {/* Original Certificates Content */}
         <div className="relative z-10 max-w-7xl mx-auto">
-          {/* Section Header + Counters */}
+         {/* Section Header + Counters */}
           <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl lg:text-5xl font-bold text-corporate-primary mb-4">
               Certificates & Achievements
             </h2>
             <div className="w-20 h-1 bg-gradient-emerald mx-auto rounded-full mb-8"></div>
-            <div className="grid md:grid-cols-2 gap-8 max-w-md mx-auto mb-12">
+            <div className="grid md:grid-cols-1 gap-8 max-w-md mx-auto mb-12">
               <div className="card-elevated p-6 rounded-lg text-center">
                 <div className="text-4xl font-bold text-primary mb-2">{certificateCount}</div>
                 <div className="text-muted-foreground">Professional Certificates</div>
               </div>
-              <div className="card-elevated p-6 rounded-lg text-center">
-                <div className="text-4xl font-bold text-accent mb-2">{achievementCount}+</div>
-                <div className="text-muted-foreground">Industry Achievements</div>
-              </div>
             </div>
           </div>
-
           {/* Certificates Grid */}
           <div className="mb-16">
             <h3 className={`text-2xl font-bold text-corporate-accent mb-8 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>Professional Certifications</h3>
@@ -180,25 +175,6 @@ const Certificates = () => {
               ))}
             </div>
           </div>
-
-          {/* Achievements */}
-          <div>
-            <h3 className={`text-2xl font-bold text-corporate-accent mb-8 text-center transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>Key Achievements</h3>
-            <div className="grid md:grid-cols-2 gap-6">
-              {achievements.map((achievement, index) => (
-                <div key={achievement.title} className={`card-corporate p-6 rounded-lg hover-lift transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${(index + certificates.length)*0.1}s`, animationFillMode:'both' }}>
-                  <div className="flex items-start gap-4">
-                    <div className="text-primary flex-shrink-0"><achievement.icon className="w-6 h-6" /></div>
-                    <div>
-                      <h4 className="font-bold text-corporate-primary mb-2">{achievement.title}</h4>
-                      <p className="text-muted-foreground text-sm">{achievement.description}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
         </div>
       </section>
     </>

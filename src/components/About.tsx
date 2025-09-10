@@ -1,17 +1,95 @@
 import { useEffect, useRef, useState } from "react";
 
-// Subtle Star Animation
+// Stars + Smooth Hover + Animated Progress Bar
 const styles = `
-  @keyframes twinkle1 {0%,100%{opacity:0.2;transform:scale(0.8);}50%{opacity:0.5;transform:scale(1.2);}}
-  @keyframes twinkle2 {0%,100%{opacity:0.3;transform:scale(1);}25%{opacity:0.6;transform:scale(1.3);}75%{opacity:0.2;transform:scale(0.9);}}
-  @keyframes twinkle3 {0%,100%{opacity:0.25;transform:scale(0.9);}33%{opacity:0.5;transform:scale(1.1);}66%{opacity:0.6;transform:scale(1.4);}}
-  @keyframes starFloat {0%{transform:translateY(0px) translateX(0px) rotate(0deg);}25%{transform:translateY(-10px) translateX(5px) rotate(90deg);}50%{transform:translateY(-5px) translateX(-5px) rotate(180deg);}75%{transform:translateY(-15px) translateX(8px) rotate(270deg);}100%{transform:translateY(0px) translateX(0px) rotate(360deg);}}
-  
+  @keyframes twinkle1 {0%,100%{opacity:0.2;}50%{opacity:0.5;} }
+  @keyframes twinkle2 {0%,100%{opacity:0.3;}25%{opacity:0.6;}75%{opacity:0.2;} }
+  @keyframes twinkle3 {0%,100%{opacity:0.25;}33%{opacity:0.5;}66%{opacity:0.6;} }
+
   .stars-layer { position:absolute;top:0;left:0;width:100%;height:100%;z-index:0; pointer-events:none; }
   .star { position:absolute; background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.3) 50%, transparent 80%); border-radius:50%; filter:drop-shadow(0 0 2px rgba(255,255,255,0.4)); }
-  .star-small { width:2px;height:2px; animation: twinkle1 3s infinite ease-in-out, starFloat 20s infinite linear; }
-  .star-medium { width:3px;height:3px; animation: twinkle2 4s infinite ease-in-out, starFloat 25s infinite linear; }
-  .star-large { width:4px;height:4px; animation: twinkle3 5s infinite ease-in-out, starFloat 30s infinite linear; }
+  .star-small { width:2px;height:2px; animation: twinkle1 3s infinite ease-in-out; }
+  .star-medium { width:3px;height:3px; animation: twinkle2 4s infinite ease-in-out; }
+  .star-large { width:4px;height:4px; animation: twinkle3 5s infinite ease-in-out; }
+
+  .skill-item { position: relative; cursor: pointer; height: 60px; }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 0.25rem;
+    padding: 0.75rem 1rem;
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #4b5563;
+    background: rgba(31,41,55,0.7);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    box-sizing: border-box;
+  }
+
+  .card-back {
+    opacity: 0;
+    pointer-events: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    background: rgba(0,255,255,0.15);
+    border: 1px solid #00ffff;
+    backdrop-filter: blur(6px);
+  }
+
+  .skill-item:hover .card-back {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .progress-bar-wrapper {
+    width: 100%;
+    height: 12px;
+    background: rgba(0,255,255,0.2);
+    border-radius: 9999px;
+    overflow: hidden;
+    margin-top: 0.5rem;
+  }
+
+  .progress-bar {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg,#00ffff,#3bffff);
+    border-radius: 9999px;
+    transition: width 1.2s ease-in-out;
+  }
+
+  .skill-item:hover .progress-bar {
+    width: var(--skill-percentage);
+  }
+
+  .percentage {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #00ffff;
+    margin-top: 0.3rem;
+    text-align: left;
+  }
+
+  .proficiency-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #00ffff;
+    margin-bottom: 0.25rem;
+    align-self: flex-start;
+  }
 `;
 
 const StyleTag = () => <style>{styles}</style>;
@@ -30,10 +108,9 @@ const About = () => {
     return () => observer.disconnect();
   }, []);
 
-  // Generate Stars
   useEffect(() => {
     const starArray = [];
-    for (let i = 0; i < 50; i++) { // fewer, more subtle stars
+    for (let i = 0; i < 50; i++) {
       starArray.push({
         id: i,
         x: Math.random() * 100,
@@ -45,16 +122,27 @@ const About = () => {
     setStars(starArray);
   }, []);
 
-  const skills = [
-    "JavaScript/TypeScript", "React/Next.js", "Node.js", "Python", 
-    "AWS/Cloud Architecture", "Docker/Kubernetes", "PostgreSQL/MongoDB", "GraphQL/REST APIs"
-  ];
+  const skills = {
+    Languages: [
+      { name: "JavaScript", level: 70 },
+      { name: "HTML5", level: 88 },
+      { name: "CSS3", level: 75 },
+      { name: "TypeScript", level: 80 },
+      { name: "Python", level: 68 }
+    ],
+    Frameworks: [
+      { name: "React", level: 75 },
+      { name: "Tailwind", level: 70 }
+    ],
+    Tools: [
+      { name: "GitHub", level: 85 }
+    ]
+  };
 
   return (
     <>
       <StyleTag />
       <section ref={sectionRef} id="about" className="relative py-20 px-4 bg-transparent overflow-hidden">
-        {/* Stars Background */}
         <div className="stars-layer">
           {stars.map(s => (
             <div 
@@ -66,64 +154,52 @@ const About = () => {
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto">
-          {/* Section Header */}
           <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
             <h2 className="text-4xl lg:text-5xl font-bold text-corporate-primary mb-4">About Me</h2>
             <div className="w-20 h-1 bg-gradient-electric mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* About Content */}
-            <div className={`transition-all duration-1000 delay-300 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'}`}>
-              <div className="card-corporate p-8 rounded-lg bg-corporate-surface/30">
-                <h3 className="text-2xl font-bold text-corporate-accent mb-6">Professional Overview</h3>
-                <div className="space-y-4 text-muted-foreground leading-relaxed">
-                  <p>
-                    With over 8 years of experience in software development, I specialize in building 
-                    scalable web applications and robust backend systems. My passion lies in transforming 
-                    complex business requirements into elegant, efficient solutions.
-                  </p>
-                  <p>
-                    I thrive in collaborative environments where I can leverage my technical expertise 
-                    and problem-solving abilities to drive innovation. My approach combines modern 
-                    development practices with a deep understanding of business needs.
-                  </p>
-                  <p>
-                    Currently focused on full-stack development, cloud architecture, and emerging 
-                    technologies that push the boundaries of what's possible in software engineering.
-                  </p>
-                </div>
-
-                <div className="mt-8 grid grid-cols-2 gap-4 text-center">
-                  <div className="card-elevated p-4 rounded-lg">
-                    <div className="text-2xl font-bold text-primary mb-1">8+</div>
-                    <div className="text-sm text-muted-foreground">Years Experience</div>
-                  </div>
-                  <div className="card-elevated p-4 rounded-lg">
-                    <div className="text-2xl font-bold text-accent mb-1">50+</div>
-                    <div className="text-sm text-muted-foreground">Projects Completed</div>
-                  </div>
-                </div>
-              </div>
+          {/* Professional Overview */}
+          <div className={`transition-all duration-1000 mb-12 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="card-corporate p-10 rounded-none border border-cyan-500 bg-corporate-surface/30">
+              <h3 className="text-2xl font-bold text-corporate-accent mb-6">Professional Overview</h3>
+              <p className="text-muted-foreground mb-2">
+                I’m an eager developer with a strong sense of direction, always looking to grow my skills and push myself further.
+              </p>
+              <p className="text-muted-foreground mb-2">
+                I enjoy taking on challenges, building projects that actually make an impact, and turning ideas into something real and useful.
+              </p>
+              <p className="text-muted-foreground">
+                Right now I’m focused on full-stack development, AI technologies, and keeping up with what’s next in tech.
+              </p>
             </div>
+          </div>
 
-            {/* Skills */}
-            <div className={`transition-all duration-1000 delay-500 ${isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-10'}`}>
-              <div className="card-corporate p-8 rounded-lg bg-corporate-surface/30">
-                <h3 className="text-2xl font-bold text-corporate-accent mb-6">Core Technologies</h3>
-                <div className="grid grid-cols-1 gap-3">
-                  {skills.map((skill, index) => (
-                    <div 
-                      key={skill}
-                      className={`flex items-center p-3 surface-elevated rounded-lg hover-lift transition-all duration-300 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
-                      style={{ transitionDelay: `${0.1 * index + 0.7}s`, animationFillMode: 'both' }}
-                    >
-                      <div className="w-2 h-2 bg-gradient-electric rounded-full mr-4"></div>
-                      <span className="text-corporate-secondary font-medium">{skill}</span>
-                    </div>
-                  ))}
+          {/* Tech Stack */}
+          <div className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+            <div className="card-corporate p-8 rounded-none border border-cyan-500 bg-corporate-surface/30">
+              <h3 className="text-2xl font-bold text-corporate-accent mb-6">Tech Stack</h3>
+              {Object.entries(skills).map(([category, items]) => (
+                <div key={category} className="mb-6">
+                  <h4 className="text-xl font-semibold text-corporate-primary mb-3">{category}</h4>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {items.map((skill) => (
+                      <div key={skill.name} className="skill-item" style={{ '--skill-percentage': `${skill.level}%` } as any}>
+                        <div className="card-inner">
+                          <div className="card-front">{skill.name}</div>
+                          <div className="card-back">
+                            <span className="proficiency-title">Proficiency Level:</span>
+                            <div className="progress-bar-wrapper">
+                              <div className="progress-bar"></div>
+                            </div>
+                            <span className="percentage">{skill.level}%</span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
