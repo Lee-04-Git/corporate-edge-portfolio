@@ -210,13 +210,13 @@ const projectRows = [
   };
 
   return (
-    <section ref={sectionRef} id="projects" className="py-20 px-4">
+    <section ref={sectionRef} id="projects" className="py-20 px-4" aria-labelledby="projects-heading">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}>
-          <h2 className="text-4xl lg:text-5xl font-bold text-corporate-primary mb-4">
+          <h2 id="projects-heading" className="text-4xl lg:text-5xl font-bold text-corporate-primary mb-4">
             Featured Projects
           </h2>
           <div className="w-20 h-1 bg-gradient-electric mx-auto rounded-full mb-4"></div>
@@ -231,9 +231,10 @@ const projectRows = [
   <div className="flex justify-center items-center mb-8 gap-4">
     <button
       onClick={prevRow}
-      className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 border border-primary/20 hover:border-primary/40 transition-all"
+      className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 border border-primary/20 hover:border-primary/40 transition-all focus:outline-none focus:ring-2 focus:ring-primary"
+      aria-label="Previous project row"
     >
-      <ChevronLeft className="w-5 h-5 text-primary" />
+      <ChevronLeft className="w-5 h-5 text-primary" aria-hidden="true" />
     </button>
     
     <div className="flex gap-2">
@@ -241,20 +242,23 @@ const projectRows = [
         <button
           key={index}
           onClick={() => setCurrentRow(index)}
-          className={`w-3 h-3 rounded-full transition-all ${
+          className={`w-3 h-3 rounded-full transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 ${
             currentRow === index 
               ? 'bg-primary shadow-glow-blue' 
               : 'bg-primary/20 hover:bg-primary/40'
           }`}
+          aria-label={`Go to project row ${index + 1}`}
+          aria-pressed={currentRow === index}
         />
       ))}
     </div>
 
     <button
       onClick={nextRow}
-      className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 border border-primary/20 hover:border-primary/40 transition-all"
+      className="p-2 rounded-full bg-primary/10 hover:bg-primary/20 border border-primary/20 hover:border-primary/40 transition-all focus:outline-none focus:ring-2 focus:ring-primary"
+      aria-label="Next project row"
     >
-      <ChevronRight className="w-5 h-5 text-primary" />
+      <ChevronRight className="w-5 h-5 text-primary" aria-hidden="true" />
     </button>
   </div>
 
@@ -278,8 +282,10 @@ const projectRows = [
     <div className="relative aspect-video overflow-hidden">
       <img
         src={project.image}
-        alt={project.title}
+        alt={`Screenshot of ${project.title} - ${project.description}`}
         className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+        loading="lazy"
+        decoding="async"
       />
       
       {/* Hover Overlay with Icons */}
@@ -288,17 +294,19 @@ const projectRows = [
           href={project.githubUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 bg-primary rounded-full hover:bg-primary/80 transition-colors transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 duration-300"
+          className="p-2 bg-primary rounded-full hover:bg-primary/80 transition-colors transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 duration-300 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+          aria-label={`View ${project.title} source code on GitHub`}
         >
-          <Github className="w-4 h-4 text-primary-foreground" />
+          <Github className="w-4 h-4 text-primary-foreground" aria-hidden="true" />
         </a>
         <a
           href={project.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="p-2 bg-accent rounded-full hover:bg-accent/80 transition-colors transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 duration-300 delay-75"
+          className="p-2 bg-accent rounded-full hover:bg-accent/80 transition-colors transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 duration-300 delay-75 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+          aria-label={`View ${project.title} live demo`}
         >
-          <ExternalLink className="w-4 h-4 text-accent-foreground" />
+          <ExternalLink className="w-4 h-4 text-accent-foreground" aria-hidden="true" />
         </a>
       </div>
     </div>

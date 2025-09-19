@@ -119,16 +119,15 @@ const Certificates = () => {
   return (
     <>
       <StyleTag />
-      <section ref={sectionRef} id="certificates" className="relative py-20 px-4 aurora-bg overflow-hidden">
-        {/* Stars */}
-        <div className="stars-layer">
+      <section ref={sectionRef} id="certificates" className="relative py-20 px-4 aurora-bg overflow-hidden" aria-labelledby="certificates-heading">
+        {/* Decorative elements */}
+        <div className="stars-layer" aria-hidden="true">
           {stars.map((s) => (
             <div key={s.id} className={`star star-${s.size}`} style={{ left: `${s.x}%`, top: `${s.y}%`, animationDelay: `${s.delay}s` }} />
           ))}
         </div>
 
-        {/* Aurora */}
-        <div className="northern-lights">
+        <div className="northern-lights" aria-hidden="true">
           <div className="aurora-layer"><div className="aurora-wave aurora-green"></div></div>
           <div className="aurora-layer"><div className="aurora-wave aurora-blue"></div></div>
         </div>
@@ -137,7 +136,7 @@ const Certificates = () => {
         <div className="relative z-10 max-w-7xl mx-auto">
          {/* Section Header + Counters */}
           <div className={`text-center mb-16 transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
-            <h2 className="text-4xl lg:text-5xl font-bold text-corporate-primary mb-4">
+            <h2 id="certificates-heading" className="text-4xl lg:text-5xl font-bold text-corporate-primary mb-4">
               Certificates & Achievements
             </h2>
             <div className="w-20 h-1 bg-gradient-emerald mx-auto rounded-full mb-8"></div>
@@ -155,11 +154,11 @@ const Certificates = () => {
               {certificates.map((cert, index) => (
                 <div key={cert.credentialId} className={`card-corporate p-6 rounded-lg hover-lift group relative overflow-hidden transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`} style={{ transitionDelay: `${index * 0.1}s`, animationFillMode:'both'}}>
                   <div className="mb-4 aspect-[4/3] relative">
-                    <embed src={`${cert.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`} type="application/pdf" className="w-full h-full rounded-md" />
+                    <embed src={`${cert.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`} type="application/pdf" className="w-full h-full rounded-md" title={`${cert.title} certificate preview`} />
                   </div>
                   <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <a href={cert.pdfUrl} target="_blank" rel="noopener noreferrer" className="p-3 bg-primary rounded-full hover:bg-primary/80 transition-colors hover-lift" title="View Certificate">
-                      <ExternalLink className="w-5 h-5 text-primary-foreground" />
+                    <a href={cert.pdfUrl} target="_blank" rel="noopener noreferrer" className="p-3 bg-primary rounded-full hover:bg-primary/80 transition-colors hover-lift focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2" aria-label={`View ${cert.title} certificate PDF`}>
+                      <ExternalLink className="w-5 h-5 text-primary-foreground" aria-hidden="true" />
                     </a>
                   </div>
                   <div className="relative z-10">

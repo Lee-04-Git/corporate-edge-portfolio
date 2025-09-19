@@ -212,17 +212,12 @@ const styles = {
       background: hsl(var(--border) 217.2 32.6% 17.5%);
     }
 
-    /* Button and card styles remain unchanged */
-    .btn-corporate { /* ... same as before ... */ }
-    .btn-corporate:hover { /* ... same as before ... */ }
-    .hover-lift { /* ... */ }
-    .hover-lift:hover { /* ... */ }
-    .card-elevated { /* ... */ }
-    .bg-gradient-emerald { /* ... */ }
-    .bg-gradient-electric { /* ... */ }
-    .text-corporate-primary { /* ... */ }
-    .text-corporate-secondary { /* ... */ }
-    .text-muted-foreground { /* ... */ }
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce) {
+      .star, .aurora-wave, .particle {
+        animation: none !important;
+      }
+    }
   `
 };
 
@@ -289,60 +284,79 @@ const Hero = () => {
     );
   };
 
-
   if (!isLoaded) return null;
 
   return (
     <>
       <StyleTag />
-      <section id="hero" className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-hidden aurora-bg">
-        {/* Stars */}
-        <div className="stars-layer">
+      <section 
+        id="hero" 
+        role="banner" 
+        aria-label="Hero section" 
+        className="relative min-h-screen flex items-center justify-center px-4 pt-20 overflow-hidden aurora-bg"
+      >
+        {/* Decorative elements */}
+        <div className="stars-layer" aria-hidden="true">
           {stars.map((s) => (
-            <div key={s.id} className={`star star-${s.size}`} style={{ left: `${s.x}%`, top: `${s.y}%`, animationDelay: `${s.delay}s` }} />
+            <div 
+              key={s.id} 
+              className={`star star-${s.size}`} 
+              style={{ left: `${s.x}%`, top: `${s.y}%`, animationDelay: `${s.delay}s` }} 
+            />
           ))}
         </div>
 
-        {/* Particles */}
-        <div className="aurora-particles">
+        <div className="aurora-particles" aria-hidden="true">
           {particles.map((p) => (
-            <div key={p.id} className="particle" style={{ left: `${p.x}%`, animationDelay: `${p.delay}s` }} />
+            <div 
+              key={p.id} 
+              className="particle" 
+              style={{ left: `${p.x}%`, animationDelay: `${p.delay}s` }} 
+            />
           ))}
         </div>
 
-        {/* Aurora */}
-        <div className="northern-lights">
+        <div className="northern-lights" aria-hidden="true">
           <div className="aurora-layer"><div className="aurora-wave aurora-green"></div></div>
           <div className="aurora-layer"><div className="aurora-wave aurora-blue"></div></div>
           <div className="aurora-layer"><div className="aurora-wave aurora-purple"></div></div>
           <div className="aurora-layer"><div className="aurora-wave aurora-cyan"></div></div>
         </div>
 
-       {/* Content */}
-<div className="relative max-w-4xl mx-auto text-center z-10 space-y-6">
-  <h1 className="text-5xl lg:text-6xl font-bold text-white mb-2">
-    <span className="inline-block overflow-hidden whitespace-nowrap border-r-2 border-blue-400">
-      {displayedText}
-    </span>
-    {showTypewriter && displayedText.length < fullName.length && <span className="animate-pulse">|</span>}
-  </h1>
-  <p className="text-2xl lg:text-3xl text-gray-300 font-semibold">
-    Software Developer
-  </p>
-  <div className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mt-4 rounded-full" />
-<p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-  Hey there! I build things that actually work and make people’s lives easier. This is where I share my projects, experiments, and the stuff I’m passionate about in tech.
-</p>
+        {/* Main content */}
+        <main id="main-content" className="relative max-w-4xl mx-auto text-center z-10 space-y-6">
+          <h1 className="text-5xl lg:text-6xl font-bold text-white mb-2">
+            <span 
+              className="inline-block overflow-hidden whitespace-nowrap border-r-2 border-blue-400" 
+              aria-live="polite"
+            >
+              {displayedText}
+            </span>
+            {showTypewriter && displayedText.length < fullName.length && (
+              <span className="animate-pulse" aria-hidden="true">|</span>
+            )}
+          </h1>
+          <p className="text-2xl lg:text-3xl text-gray-300 font-semibold">
+            Software Developer
+          </p>
+          <div 
+            className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mt-4 rounded-full" 
+            aria-hidden="true" 
+          />
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            Hey there! I build things that actually work and make people's lives easier. 
+            This is where I share my projects, experiments, and the stuff I'm passionate about in tech.
+          </p>
 
-<button
-  onClick={handleDownloadResume}
-  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-none shadow hover:brightness-95 transition duration-300"
->
-  <Download className="w-5 h-5 flex-shrink-0" />
-  Download Resume
-</button>
-
-</div>
+          <button
+            onClick={handleDownloadResume}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-none shadow hover:brightness-95 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent"
+            aria-label="Download Lee Maalgraaff's Resume PDF"
+          >
+            <Download className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+            Download Resume
+          </button>
+        </main>
       </section>
     </>
   );
