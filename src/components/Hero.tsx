@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { Download } from "lucide-react";
-import profileImage from "@/assets/profile-image.jpg";
+import profileImage from "@/assets/profile-pic.jpg";
+import resumePdf from "@/assets/CS20240156_Lee_Maalgraaff_Resume.pdf";
+// import InteractiveSphere from "./InteractiveSphere";
 
 // Enhanced Northern Lights animations
 const styles = {
@@ -278,10 +280,7 @@ const Hero = () => {
   }, [showTypewriter, isDeleting, displayedText, fullName]);
 
   const handleDownloadResume = () => {
-    window.open(
-      "https://drive.google.com/file/d/1nzEWOEDquPNF5qM5GKU955ax9u_T3ilf/view?usp=sharing",
-      "_blank"
-    );
+    window.open(resumePdf, "_blank");
   };
 
   if (!isLoaded) return null;
@@ -324,38 +323,56 @@ const Hero = () => {
         </div>
 
         {/* Main content */}
-        <main id="main-content" className="relative max-w-4xl mx-auto text-center z-10 space-y-6">
-          <h1 className="text-5xl lg:text-6xl font-bold text-white mb-2">
-            <span 
-              className="inline-block overflow-hidden whitespace-nowrap border-r-2 border-blue-400" 
-              aria-live="polite"
-            >
-              {displayedText}
-            </span>
-            {showTypewriter && displayedText.length < fullName.length && (
-              <span className="animate-pulse" aria-hidden="true">|</span>
-            )}
-          </h1>
-          <p className="text-2xl lg:text-3xl text-gray-300 font-semibold">
-            Software Developer
-          </p>
-          <div 
-            className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto mt-4 rounded-full" 
-            aria-hidden="true" 
-          />
-          <p className="text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Hey there! I build things that actually work and make people's lives easier. 
-            This is where I share my projects, experiments, and the stuff I'm passionate about in tech.
-          </p>
+        <main id="main-content" className="relative max-w-6xl mx-auto text-center z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh] lg:min-h-0">
+            {/* Text content */}
+            <div className="space-y-6 order-2 lg:order-1 lg:text-left">
+              <h1 className="text-xl lg:text-2xl xl:text-3xl font-bold text-white mb-2">
+                <span 
+                  className="inline-block overflow-hidden whitespace-nowrap border-r-2 border-blue-400" 
+                  aria-live="polite"
+                >
+                  {displayedText}
+                </span>
+                {showTypewriter && displayedText.length < fullName.length && (
+                  <span className="animate-pulse" aria-hidden="true">|</span>
+                )}
+              </h1>
+              <p className="text-xl lg:text-2xl xl:text-3xl text-gray-300 font-semibold">
+                Software Developer
+              </p>
+              <div 
+                className="w-24 h-1 bg-gradient-to-r from-blue-400 to-purple-400 mx-auto lg:mx-0 mt-4 rounded-full" 
+                aria-hidden="true" 
+              />
+              <p className="text-base lg:text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                Hey there! I build things that actually work and make people's lives easier. 
+                This is where I share my projects, experiments, and the stuff I'm passionate about in tech.
+              </p>
 
-          <button
-            onClick={handleDownloadResume}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-none shadow hover:brightness-95 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent"
-            aria-label="Download Lee Maalgraaff's Resume PDF"
-          >
-            <Download className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
-            Download Resume
-          </button>
+              <div className="pt-2">
+                <button
+                  onClick={handleDownloadResume}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-none shadow hover:brightness-95 transition duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2 focus:ring-offset-transparent"
+                  aria-label="Download Lee Maalgraaff's Resume PDF"
+                >
+                  <Download className="w-5 h-5 flex-shrink-0" aria-hidden="true" />
+                  Download Resume
+                </button>
+              </div>
+            </div>
+
+            {/* Profile Image */}
+            <div className="order-1 lg:order-2 flex justify-center items-center">
+              <div className="w-full max-w-xs sm:max-w-sm lg:max-w-md xl:max-w-lg">
+                <img 
+                  src={profileImage} 
+                  alt="Lee Maalgraaff" 
+                  className="w-full h-auto object-contain rounded-lg shadow-lg"
+                />
+              </div>
+            </div>
+          </div>
         </main>
       </section>
     </>

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import ThemeToggle from "./ThemeToggle";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -61,12 +60,10 @@ const Navigation = () => {
                 {item.name}
               </a>
             ))}
-            <ThemeToggle />
           </div>
 
-          {/* Mobile menu button and theme toggle */}
-          <div className="flex items-center gap-3 md:hidden">
-            <ThemeToggle />
+          {/* Mobile menu button */}
+          <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-muted-foreground hover:text-primary transition-colors focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"

@@ -6,6 +6,7 @@ import Experience from "./Experience";
 import Projects from "./Projects";
 import Certificates from "./Certificates";
 import Contact from "./Contact";
+import Footer from "./Footer";
 import PerformanceOptimizer from "./PerformanceOptimizer";
 
 const Portfolio = () => {
@@ -22,6 +23,7 @@ const Portfolio = () => {
           <Certificates />
           <Contact />
         </main>
+        <Footer />
       </div>
     </ThemeProvider>
   );
