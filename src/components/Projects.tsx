@@ -64,7 +64,7 @@ const Projects = () => {
       {
         title: "LM Pod",
         description: "Podcast streaming and management platform.",
-        technologies: ["React", "JavaScript",]
+        technologies: ["React", "JavaScript",],
         liveUrl: "https://lm-pod.netlify.app",
         image: lmPodImg
       }
