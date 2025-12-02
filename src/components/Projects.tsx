@@ -43,28 +43,28 @@ const Projects = () => {
       {
         title: "Book Connect",
         description: "Full-stack book management and reading list application.",
-        technologies: ["React", "Node.js", "PostgreSQL", "Redux"],
+        technologies: ["HTML", "JavaScript"],
         liveUrl: "https://book-connect-site.netlify.app",
         image: bookConnectImg
       },
       {
         title: "Code Cuisine",
         description: "Recipe sharing and cooking tutorial platform.",
-        technologies: ["React", "Node.js", "MongoDB", "Express"],
+        technologies: ["HTML", "CSS", "JavaScript"],
         liveUrl: "https://codecuisine-site.netlify.app",
         image: codeCuisineImg
       },
       {
         title: "Content Generator",
         description: "AI-powered content generation tool.",
-        technologies: ["React", "OpenAI API", "Node.js", "Express"],
+        technologies: ["React", "JavaScript", "TailwindCSS"],
         liveUrl: "https://cb-main-content-generator.netlify.app",
         image: contentGeneratorImg
       },
       {
         title: "LM Pod",
         description: "Podcast streaming and management platform.",
-        technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
+        technologies: ["React", "JavaScript",]
         liveUrl: "https://lm-pod.netlify.app",
         image: lmPodImg
       }
@@ -74,28 +74,28 @@ const Projects = () => {
       {
         title: "Meme Generator",
         description: "Interactive meme creation and sharing platform.",
-        technologies: ["React", "Canvas API", "Firebase", "Cloudinary"],
+        technologies: ["React", "JavaScript"],
         liveUrl: "https://my-meme-generator-site.netlify.app",
         image: memeGeneratorImg
       },
       {
         title: "Movie Maniac",
         description: "Movie discovery and review platform.",
-        technologies: ["React", "TMDB API", "Firebase", "Tailwind"],
+        technologies: ["React", "JavaScript", "TailwindCSS"],
         liveUrl: "https://my-movie-radar.netlify.app",
         image: movieManiacImg
       },
       {
         title: "Pig Game",
         description: "Interactive dice game with multiplayer support.",
-        technologies: ["JavaScript", "HTML", "CSS", "Socket.io"],
+        technologies: ["JavaScript", "HTML", "CSS"],
         liveUrl: "https://lee-pig-game.netlify.app",
         image: pigGameImg
       },
       {
         title: "Recidex",
         description: "Recipe indexing and management system.",
-        technologies: ["React", "Node.js", "MongoDB", "Express"],
+        technologies: ["TypeScript", "CSS", "HTML"],
         liveUrl: "https://recidex.netlify.app",
         image: recidexImg
       }
@@ -105,7 +105,7 @@ const Projects = () => {
       {
         title: "Task Management",
         description: "Project and task management platform.",
-        technologies: ["React", "Node.js", "MongoDB", "Express"],
+        technologies: ["JavaScript", "HTML", "CSS"],
         liveUrl: "https://mytask-managementapp.netlify.app",
         image: taskManagementImg
       }
